@@ -1,6 +1,6 @@
 {
   "name": "sound-cues",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "title": "Sound cues",
   "description": "Sounds for events with a mute, driven by a manifest of sound files, for web, Apple and Android.",
   "facilities": [
@@ -99,9 +99,9 @@
     "java": "26.0.1"
   },
   "platforms": [
-    "web",
+    "android",
     "apple",
-    "android"
+    "web"
   ],
   "text": {
     "purpose": "`sound-cues` plays short sounds for what happens in an application. A manifest lists the sound files (cues) and which cues each event plays, in order and with delays, so an event such as \"cards revealed\" can play a deal sound then, 300 ms later, a flip sound. The application sends events by name and never touches audio; the files and the event names stay with the application (the recipe ships its own manifest and files). Sound is on or off by the device's `sound` preference from the `preferences` component, turning it off stops everything playing or waiting; a host can also forbid sound for now (a shared display). Browsers allow sound only after a tap, so nothing plays until the first one unlocks it. The component knows nothing about poker or any other game.",
@@ -131,5 +131,162 @@
       }
     ],
     "notes": "Pure library; no provider limits apply."
+  },
+  "classes": [
+    {
+      "reference": {
+        "name": "ourapps-ae/sound-cues-class",
+        "version": "1.0.0",
+        "digest": "4d407858e93334b2bdb7e1531e1971d30e59ef0302e317133d101d84e4122269"
+      },
+      "descriptor": {
+        "format": 1,
+        "name": "ourapps-ae/sound-cues-class",
+        "version": "1.0.0",
+        "provides": [
+          {
+            "type": "ae/sound-cues",
+            "version": "1.0.0",
+            "path": "classes/sound-cues-class/sound-cues.json",
+            "modules": {
+              "web": [
+                "web/index.ts"
+              ],
+              "android": [
+                "android/src/main/java"
+              ],
+              "ios": [
+                "apple/Sources"
+              ],
+              "macos": [
+                "apple/Sources"
+              ],
+              "tvos": [
+                "apple/Sources"
+              ],
+              "windows": [
+                "web/index.ts"
+              ]
+            }
+          }
+        ],
+        "requires": [
+          {
+            "type": "ae/preferences",
+            "version": "1.0.0"
+          }
+        ],
+        "settings": {
+          "type": "object",
+          "properties": {
+            "defaultMuted": {
+              "type": "boolean"
+            },
+            "soundManifest": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9-]{0,63}$"
+            }
+          },
+          "required": [
+            "defaultMuted",
+            "soundManifest"
+          ],
+          "additionalProperties": false
+        },
+        "inventory": [
+          {
+            "path": "classes/sound-cues-class/check.mjs",
+            "digest": "02628f3bf39438591660c169171ec1783df71a5b75d4d67d4bea747cc9257d0f"
+          },
+          {
+            "path": "classes/sound-cues-class/runtime.mjs",
+            "digest": "7440f3891614c423f74668cb5a2445fea58bbfa4d7c740c8e8a855d1d9300d43"
+          },
+          {
+            "path": "classes/sound-cues-class/sound-cues.json",
+            "digest": "6ed86b6152de0e4931c3990d36b9a7beaeca3af6fa41fe4df1250e6eecf0b98a"
+          }
+        ],
+        "verification": [
+          {
+            "id": "shared",
+            "root": "package",
+            "argv": [
+              "node",
+              "classes/sound-cues-class/check.mjs"
+            ],
+            "cwd": ".",
+            "prepare": [],
+            "tools": {
+              "node": "26.5"
+            },
+            "fixtures": [
+              "classes/sound-cues-class/check.mjs"
+            ],
+            "locks": [],
+            "network": false,
+            "timeoutSeconds": 60,
+            "expectedExit": 0,
+            "scope": "required-local",
+            "requirements": []
+          }
+        ]
+      }
+    }
+  ],
+  "implements": [
+    {
+      "name": "ourapps-ae/sound-cues-class",
+      "version": "1.0.0",
+      "digest": "4d407858e93334b2bdb7e1531e1971d30e59ef0302e317133d101d84e4122269"
+    }
+  ],
+  "upstream": [],
+  "compatibility": {
+    "runtimes": {
+      "node": ">=26.5.0 <27.0.0",
+      "swift": "=6.4.2",
+      "ios": ">=17.0.0",
+      "macos": ">=14.0.0",
+      "tvos": ">=17.0.0",
+      "kotlin": "=2.3.20",
+      "java": ">=17.0.0 <27.0.0",
+      "android": ">=8.0.0"
+    },
+    "frameworks": {},
+    "dependencies": [],
+    "styles": {
+      "scope": "none",
+      "namespaces": [],
+      "conflicts": []
+    }
+  },
+  "maintenance": {
+    "owners": [
+      "Level N Ltd"
+    ],
+    "contact": "https://github.com/ourapps-ae/sound-cues/issues",
+    "repository": "https://github.com/ourapps-ae/sound-cues",
+    "updates": {
+      "source": "https://github.com/ourapps-ae/sound-cues/releases",
+      "strategy": "manual"
+    }
+  },
+  "supportedPlatforms": [
+    "android",
+    "ios",
+    "macos",
+    "tvos",
+    "web",
+    "windows"
+  ],
+  "licence": "Apache-2.0",
+  "licenceFile": "LICENCE",
+  "noticeFile": "NOTICE",
+  "templates": [],
+  "modules": {
+    "web": "web/index.ts",
+    "android": "android/src/main/java",
+    "apple": "apple/Sources"
   }
 }

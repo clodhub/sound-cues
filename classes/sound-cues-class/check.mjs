@@ -1,0 +1,13 @@
+import { assert, load } from './runtime.mjs';
+const m = await load('web/index.ts');
+const manifest = { format: 1, cues: { bell: 'bell.wav' }, events: { start: ['bell', { cue: 'bell', delayMs: 200 }] } };
+assert.deepEqual(m.validateManifest(manifest), []);
+assert.deepEqual(m.eventPlan(manifest, 'start'), [{ cue: 'bell', delayMs: 0 }, { cue: 'bell', delayMs: 200 }]);
+assert.deepEqual(m.eventPlan(manifest, 'unknown'), []);
+assert.deepEqual(m.eventPlan(manifest, 'bell'), [{ cue: 'bell', delayMs: 0 }]);
+assert.throws(() => m.parseManifest('{'));
+assert.equal(m.isSafeFile('../private.wav'), false);
+assert.throws(() => m.fileUrl('/sounds', '../private.wav'));
+assert.equal(m.isMuted(false, false), true);
+assert.equal(m.isMuted(true, true), false);
+assert.equal(m.isMuted(null, true), true);
