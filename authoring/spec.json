@@ -1,6 +1,6 @@
 {
   "name": "sound-cues",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "title": "Sound cues",
   "description": "Sounds for events with a mute, driven by a manifest of sound files, for web, Apple and Android.",
   "facilities": [
@@ -70,7 +70,8 @@
       ],
       "tools": {
         "python3": "3.12.8",
-        "swiftc": "6.4.2"
+        "swiftc": "6.4.2",
+        "xcrun": "72"
       }
     },
     {

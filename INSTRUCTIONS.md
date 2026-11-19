@@ -3,7 +3,7 @@
 ## For the agent
 Select `ourapps-ae/sound-cues`; connect `preferences` to the preferences component's output. Set `soundManifest` to the folder the recipe's sound files and manifest live in, and `defaultMuted` only if the user wants sound off to begin with. The event names in the manifest come from the recipe; do not invent them here.
 
-- Select package `ourapps-ae/sound-cues` version `0.7.0`.
+- Select package `ourapps-ae/sound-cues` version `0.8.0`.
 - Settings to configure:
   - `soundManifest` (string, slug; optional; default `sounds`)
   - `defaultMuted` (boolean; optional; default `False`)
@@ -18,6 +18,6 @@ Supply the sound files and a `manifest.json` in the folder named by `soundManife
 From the component directory:
 
 - `node --test tests/web.test.ts` (web, required-local; tools: node 26.5)
-- `python3 tests/native.py apple` (apple, platform; tools: python3 3.12, swiftc 6.4)
+- `python3 tests/native.py apple` (apple, platform; tools: python3 3.12, swiftc 6.4, xcrun 72)
 - `python3 tests/native.py android` (android, platform; tools: python3 3.12, kotlinc 2.2, java 26.0)
 - `python3 -m aepm review <digest> --store STORE --policy POLICY --trusted --allow-network` checks an archive fetched with `python3 -m aepm fetch ourapps-ae/sound-cues@VERSION --store STORE --from https://ourapps.app` and runs its suites.
