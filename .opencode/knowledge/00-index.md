@@ -1,5 +1,5 @@
 # sound-cues ownership
 
-Repository: https://github.com/ourapps-ae/sound-cues.git (local only; nothing pushed).
+Repository: https://github.com/clodhub/sound-cues.git.
 Current code: `implementation/android/src/main/java/ae/sound/CueModel.kt`, `implementation/android/src/main/java/ae/sound/ManifestJson.kt`, `implementation/android/src/main/java/ae/sound/SoundCuePlayer.kt`, `implementation/apple/Sources/SoundCueModel.swift`, `implementation/apple/Sources/SoundCuePlayer.swift`, `implementation/web/cue-model.ts`, `implementation/web/cues.ts`.
-`component.json`, `LICENCE`, `tools.lock.json` and `visual/` are generated from `authoring/spec.json`; edit the spec, not the generated files. `CONTRACT.md`, `INSTRUCTIONS.md` and `SOURCE.md` are hand-written and kept on regeneration.
+`component.json`, `tools.lock.json` and `visual/` are generated from `authoring/spec.json`; edit the spec, not the generated files. `CONTRACT.md`, `INSTRUCTIONS.md` and `SOURCE.md` are hand-written and kept on regeneration.

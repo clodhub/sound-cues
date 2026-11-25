@@ -1,6 +1,6 @@
 {
   "name": "sound-cues",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "title": "Sound cues",
   "description": "Sounds for events with a mute, driven by a manifest of sound files, for web, Apple and Android.",
   "facilities": [
@@ -54,7 +54,7 @@
       ],
       "scope": "required-local",
       "tools": {
-        "node": "26.5.0"
+        "node": "26.5"
       }
     },
     {
@@ -69,8 +69,8 @@
         "tests/apple/main.swift"
       ],
       "tools": {
-        "python3": "3.12.8",
-        "swiftc": "6.4.2",
+        "python3": "3.12",
+        "swiftc": "6.4",
         "xcrun": "72"
       }
     },
@@ -86,18 +86,19 @@
         "tests/android/Main.kt"
       ],
       "tools": {
-        "python3": "3.12.8",
-        "kotlinc": "2.2.0",
-        "java": "26.0.1"
+        "java": "26.0",
+        "kotlinc": "2.2",
+        "python3": "3.12"
       }
     }
   ],
   "tools": {
-    "node": "26.5.0",
-    "python3": "3.12.8",
-    "swiftc": "6.4.2",
-    "kotlinc": "2.2.0",
-    "java": "26.0.1"
+    "node": "26.5",
+    "python3": "3.12",
+    "swiftc": "6.4",
+    "xcrun": "72",
+    "kotlinc": "2.2",
+    "java": "26.0"
   },
   "platforms": [
     "android",
@@ -113,7 +114,7 @@
     "scenarios": "A button press emits `button` and a click plays; revealing cards emits `reveal` and a deal sound is followed 300 ms later by a flip; the player taps the sound toggle, everything stops and later events stay silent; on a shared display the host forbids sound; a recipe with its own sounds and event names supplies its own manifest folder.",
     "updates": "Patch updates replace files only. The component keeps no data of its own (the sound preference is kept by the preferences component); removal deletes its files and the application's imports of them."
   },
-  "agentInstructions": "Select `ourapps-ae/sound-cues`; connect `preferences` to the preferences component's output. Set `soundManifest` to the folder the recipe's sound files and manifest live in, and `defaultMuted` only if the user wants sound off to begin with. The event names in the manifest come from the recipe; do not invent them here.",
+  "agentInstructions": "Select `clodhub/sound-cues`; connect `preferences` to the preferences component's output. Set `soundManifest` to the folder the recipe's sound files and manifest live in, and `defaultMuted` only if the user wants sound off to begin with. The event names in the manifest come from the recipe; do not invent them here.",
   "developerInstructions": "Supply the sound files and a `manifest.json` in the folder named by `soundManifest`; keep them short and quiet if microphones may be open. On the web serve the folder next to the page and pass its URL as `baseUrl`; on Apple add the files to the bundle; on Android add them as raw resources named as `rawResourceName` says. Call `unlock` (or `unlockOn`) from a user tap on the web.",
   "suitability": {
     "format": 1,
@@ -136,13 +137,13 @@
   "classes": [
     {
       "reference": {
-        "name": "ourapps-ae/sound-cues-class",
+        "name": "clodhub/sound-cues-class",
         "version": "1.1.0",
-        "digest": "f3d5d5da3fefa237f8b64842cf95eb457f283b356a217de4f2f9e98486757040"
+        "digest": "8ee148be79cb3499d35be888ca5a31735c48b1cafe88f95411c742a33d37af75"
       },
       "descriptor": {
         "format": 2,
-        "name": "ourapps-ae/sound-cues-class",
+        "name": "clodhub/sound-cues-class",
         "version": "1.1.0",
         "title": "Sound cues",
         "summary": "Short sounds played for events, with mute and delay",
@@ -209,7 +210,7 @@
           },
           {
             "path": "classes/sound-cues-class/sound-cues.json",
-            "digest": "6ed86b6152de0e4931c3990d36b9a7beaeca3af6fa41fe4df1250e6eecf0b98a"
+            "digest": "53f9b6c96e51276eef1511979d3759837cdca7f05efa7e143dcc770b8911f23c"
           }
         ],
         "verification": [
@@ -241,9 +242,9 @@
   ],
   "implements": [
     {
-      "name": "ourapps-ae/sound-cues-class",
+      "name": "clodhub/sound-cues-class",
       "version": "1.1.0",
-      "digest": "f3d5d5da3fefa237f8b64842cf95eb457f283b356a217de4f2f9e98486757040"
+      "digest": "8ee148be79cb3499d35be888ca5a31735c48b1cafe88f95411c742a33d37af75"
     }
   ],
   "upstream": [],
@@ -270,10 +271,10 @@
     "owners": [
       "Level N Ltd"
     ],
-    "contact": "https://github.com/ourapps-ae/sound-cues/issues",
-    "repository": "https://github.com/ourapps-ae/sound-cues",
+    "contact": "https://github.com/clodhub/sound-cues/issues",
+    "repository": "https://github.com/clodhub/sound-cues",
     "updates": {
-      "source": "https://github.com/ourapps-ae/sound-cues/releases",
+      "source": "https://github.com/clodhub/sound-cues/releases",
       "strategy": "manual"
     }
   },
