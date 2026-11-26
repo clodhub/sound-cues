@@ -1,4 +1,4 @@
-package ae.sound
+package com.clodhub.sound
 
 // Sounds for events, as data: a manifest names the sound files (cues) and says which cues an event
 // plays and when. The sound files and the event names belong to the application; nothing here
@@ -13,7 +13,7 @@ object CueModel {
     const val DEFAULT_MANIFEST = "sounds"
     private val NAME = Regex("^[a-z][a-z0-9_-]{0,47}$")
 
-    // The setting is the folder name (letters, digits and hyphens; an aepm string setting cannot hold
+    // The setting is the folder name (letters, digits and hyphens; a clod string setting cannot hold
     // a slash or a dot); the manifest is that folder's manifest.json.
     fun manifestPath(soundManifest: String): String {
         require(Regex("^[a-z][a-z0-9-]{0,63}$").matches(soundManifest)) { "soundManifest must be a folder name of lower-case letters, digits and hyphens: $soundManifest" }

@@ -17,7 +17,7 @@ export const NAME = /^[a-z][a-z0-9_-]{0,47}$/;
 export const AUDIO_EXTENSIONS = ["wav", "mp3", "ogg", "m4a", "aac", "caf"];
 export const MANIFEST_FILE = "manifest.json";
 
-// The setting is the folder name (letters, digits and hyphens; an aepm string setting cannot hold a
+// The setting is the folder name (letters, digits and hyphens; a clod string setting cannot hold a
 // slash or a dot); the manifest is that folder's manifest.json.
 export function manifestPath(soundManifest: string): string {
   if (!/^[a-z][a-z0-9-]{0,63}$/.test(soundManifest)) throw new Error(`soundManifest must be a folder name of lower-case letters, digits and hyphens: ${soundManifest}`);

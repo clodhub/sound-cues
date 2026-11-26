@@ -7,19 +7,19 @@
   "focus": "component",
   "definitions": [
     {
-      "id": "clodhub.sound-cues",
+      "id": "com.clodhub.sound-cues",
       "name": "Sound cues",
       "kind": "component",
       "status": "example",
-      "package": "clodhub/sound-cues",
-      "version": "0.10.0",
+      "package": "pkg:clod/com.clodhub/sound-cues",
+      "version": "0.11.0",
       "ports": [
         {
           "id": "preferences",
           "name": "Preferences",
           "direction": "input",
           "kind": "interface",
-          "type": "ae/preferences",
+          "type": "com.clodhub/preferences",
           "version": "1.0.0",
           "required": true,
           "cardinality": "one"
@@ -29,7 +29,7 @@
           "name": "Sound cues",
           "direction": "output",
           "kind": "interface",
-          "type": "ae/sound-cues",
+          "type": "com.clodhub/sound-cues",
           "version": "1.0.0"
         }
       ],
@@ -64,7 +64,7 @@
           "name": "Sound cues",
           "direction": "input",
           "kind": "interface",
-          "type": "ae/sound-cues",
+          "type": "com.clodhub/sound-cues",
           "version": "1.0.0",
           "required": true,
           "cardinality": "one"
@@ -74,7 +74,7 @@
           "name": "Preferences",
           "direction": "output",
           "kind": "interface",
-          "type": "ae/preferences",
+          "type": "com.clodhub/preferences",
           "version": "1.0.0"
         }
       ],
@@ -85,7 +85,7 @@
     {
       "id": "component",
       "name": "Sound cues",
-      "definition": "clodhub.sound-cues",
+      "definition": "com.clodhub.sound-cues",
       "configuration": {}
     },
     {

@@ -1,4 +1,4 @@
-import ae.sound.*
+import com.clodhub.sound.*
 
 // Mirrors tests/apple/main.swift: plans and resource names are compared with rows the TypeScript produced (Expected.kt).
 fun check(condition: Boolean, message: String) { if (!condition) { System.err.println("FAIL: $message"); System.exit(1) } }

@@ -6,17 +6,17 @@
 Facilities: `sound-cues` (Sound cues for events, a manifest of sounds, mute by the device's sound preference).
 
 ## User inputs
-`soundManifest`: the folder name that holds `manifest.json` and the sound files (lower-case letters, digits and hyphens; an aepm string setting cannot hold a slash or a dot, so it is a name not a path), default `sounds`. `defaultMuted`: whether sound starts muted when the device has no recorded preference, default false; give the preferences component `soundPreferenceDefault(defaultMuted)` as its default for `sound` so both agree. The manifest is `{ "format": 1, "cues": { "tap": "tap.wav" }, "events": { "button": ["tap"], "reveal": [{ "cue": "deal" }, { "cue": "flip", "delayMs": 300 }] } }`; files end in wav, mp3, ogg, m4a, aac or caf and are relative paths with no `..`.
+`soundManifest`: the folder name that holds `manifest.json` and the sound files (lower-case letters, digits and hyphens; a clod string setting cannot hold a slash or a dot, so it is a name not a path), default `sounds`. `defaultMuted`: whether sound starts muted when the device has no recorded preference, default false; give the preferences component `soundPreferenceDefault(defaultMuted)` as its default for `sound` so both agree. The manifest is `{ "format": 1, "cues": { "tap": "tap.wav" }, "events": { "button": ["tap"], "reveal": [{ "cue": "deal" }, { "cue": "flip", "delayMs": 300 }] } }`; files end in wav, mp3, ogg, m4a, aac or caf and are relative paths with no `..`.
 
 - `soundManifest` (string, slug; optional; default `sounds`)
-- `defaultMuted` (boolean; optional; default `False`)
+- `defaultMuted` (boolean; optional; default `false`)
 
 ## Artefacts and dependencies
 `component.json` maps every `implementation/` source into `components/sound-cues/`:
 
-- `implementation/android/src/main/java/ae/sound/CueModel.kt` -> `components/sound-cues/android/src/main/java/ae/sound/CueModel.kt`
-- `implementation/android/src/main/java/ae/sound/ManifestJson.kt` -> `components/sound-cues/android/src/main/java/ae/sound/ManifestJson.kt`
-- `implementation/android/src/main/java/ae/sound/SoundCuePlayer.kt` -> `components/sound-cues/android/src/main/java/ae/sound/SoundCuePlayer.kt`
+- `implementation/android/src/main/java/com/clodhub/sound/CueModel.kt` -> `components/sound-cues/android/src/main/java/com/clodhub/sound/CueModel.kt`
+- `implementation/android/src/main/java/com/clodhub/sound/ManifestJson.kt` -> `components/sound-cues/android/src/main/java/com/clodhub/sound/ManifestJson.kt`
+- `implementation/android/src/main/java/com/clodhub/sound/SoundCuePlayer.kt` -> `components/sound-cues/android/src/main/java/com/clodhub/sound/SoundCuePlayer.kt`
 - `implementation/apple/Sources/SoundCueModel.swift` -> `components/sound-cues/apple/Sources/SoundCueModel.swift`
 - `implementation/apple/Sources/SoundCuePlayer.swift` -> `components/sound-cues/apple/Sources/SoundCuePlayer.swift`
 - `implementation/web/cue-model.ts` -> `components/sound-cues/web/cue-model.ts`
@@ -26,10 +26,10 @@ Dependencies: none.
 `tools.lock.json` pins verification tools: node 26.5, python3 3.12, swiftc 6.4, xcrun 72, kotlinc 2.2, java 26.0. Licence wording remains deferred.
 
 ## Provided interfaces
-- `interfaces/sound-cues.json` defines `sound-cues` (ae/sound-cues) version 1.0.0 as an OpenRPC 1.3.2 document: one method per web function and per operation of the player `createCues` returns (`Cues.play` and so on), each description naming the Swift and Kotlin form or saying it is web only, with the sound manifest (`manifest.json`), cue steps and settings as JSON Schema 2020-12 under `components.schemas`. The preferences store, audio context and callbacks are described as host values, not serialised.
+- `interfaces/sound-cues.json` defines `sound-cues` (com.clodhub/sound-cues) version 1.0.0 as an OpenRPC 1.3.2 document: one method per web function and per operation of the player `createCues` returns (`Cues.play` and so on), each description naming the Swift and Kotlin form or saying it is web only, with the sound manifest (`manifest.json`), cue steps and settings as JSON Schema 2020-12 under `components.schemas`. The preferences store, audio context and callbacks are described as host values, not serialised.
 
 ## Required interfaces
-- `preferences` (ae/preferences) version 1.0.0, supplied by the recipe or application. Its interface document is a copy of the preferences component's document; sound-cues uses its `get`, `set` and `subscribe` for the `sound` value.
+- `preferences` (com.clodhub/preferences) version 1.0.0, supplied by the recipe or application. Its interface document is a copy of the preferences component's document; sound-cues uses its `get`, `set` and `subscribe` for the `sound` value.
 
 ## Integration
 Web: `createCues({ manifest, baseUrl: "./sounds", preferences, allowed })`, then `cues.unlockOn(document)` so the first tap unlocks sound, and `cues.emit("event")` wherever something happens; wire a sound toggle to `cues.setMuted`. `preferences` is the preferences component's store (only `get`, `set` and `subscribe` of `sound` are used); without it mute is kept in memory. Apple: parse the manifest with `SoundCueModel.parseManifest`, make a `SoundCuePlayer(manifest:locate:isMuted:allowed:)` where `locate` finds files in the bundle and `isMuted` reads `SoundCueModel.isMuted(sound:defaultMuted:)`; call `stopAll()` when sound is turned off. Android: `ManifestJson.parse` the manifest, package the files as raw resources named by `CueModel.rawResourceName` (tap.wav becomes `snd_tap`), make a `SoundCuePlayer(manifest, isMuted, allowed)` and call `init(context)`, `emit(event)`, and `stopAll()` when sound is turned off. Which events exist, the sounds themselves, call audio and the other players' voices stay with the recipe.

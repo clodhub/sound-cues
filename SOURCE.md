@@ -14,9 +14,9 @@ Reference revision: `19905b75dbea89fbfd424d67fe26c81aaed0e018`. Extracted from t
 
 ## Android
 
-- `implementation/android/src/main/java/ae/sound/CueModel.kt` <- new (`generated-platform`), matching the web and Apple models, over `android/app/src/main/java/app/ourapps/ourpoker/Sound.kt:13-18` (`SoundName` and its `R.raw.snd_*` names).
-- `implementation/android/src/main/java/ae/sound/ManifestJson.kt` <- new, reads the manifest with `org.json`.
-- `implementation/android/src/main/java/ae/sound/SoundCuePlayer.kt` <- `Sound.kt:20-42` (`Sound`: SoundPool with four streams, game usage attributes, delayed play on the main handler). Generalised: `SoundName(res)` enum became manifest cues resolved through `rawResourceName`; `enabled` became an `isMuted` callback; `stopAll` also cancels delayed cues (the recipe's did not). Left behind: `SoundSetting` (`Sound.kt:44-53`, kept by the preferences component).
+- `implementation/android/src/main/java/com/clodhub/sound/CueModel.kt` <- new (`generated-platform`), matching the web and Apple models, over `android/app/src/main/java/app/ourapps/ourpoker/Sound.kt:13-18` (`SoundName` and its `R.raw.snd_*` names).
+- `implementation/android/src/main/java/com/clodhub/sound/ManifestJson.kt` <- new, reads the manifest with `org.json`.
+- `implementation/android/src/main/java/com/clodhub/sound/SoundCuePlayer.kt` <- `Sound.kt:20-42` (`Sound`: SoundPool with four streams, game usage attributes, delayed play on the main handler). Generalised: `SoundName(res)` enum became manifest cues resolved through `rawResourceName`; `enabled` became an `isMuted` callback; `stopAll` also cancels delayed cues (the recipe's did not). Left behind: `SoundSetting` (`Sound.kt:44-53`, kept by the preferences component).
 
 ## Tests
 

@@ -27,7 +27,7 @@ enum SoundCueModel {
 
     private static func matches(_ pattern: String, _ s: String) -> Bool { s.range(of: pattern, options: .regularExpression) != nil }
 
-    // The setting is the folder name (letters, digits and hyphens; an aepm string setting cannot hold
+    // The setting is the folder name (letters, digits and hyphens; a clod string setting cannot hold
     // a slash or a dot); the manifest is that folder's manifest.json.
     static func manifestPath(_ soundManifest: String) throws -> String {
         guard matches("^[a-z][a-z0-9-]{0,63}$", soundManifest) else { throw SoundCueError.invalid(["soundManifest must be a folder name of lower-case letters, digits and hyphens: \(soundManifest)"]) }

@@ -238,7 +238,7 @@ test("a consumer clicks a button without a game", async () => {
 test("the OpenRPC interface describes the manifest, the settings and the exported functions", async () => {
   const doc = JSON.parse(readFileSync(new URL("../interfaces/sound-cues.json", import.meta.url), "utf8"));
   assert.equal(doc.openrpc, "1.3.2");
-  assert.deepEqual([doc.info.title, doc.info.version], ["ae/sound-cues", "1.0.0"]);
+  assert.deepEqual([doc.info.title, doc.info.version], ["com.clodhub/sound-cues", "1.0.0"]);
   const { Name, SoundFile, Manifest: shape, SoundSettings } = doc.components.schemas;
   const name = new RegExp(Name.pattern), file = new RegExp(SoundFile.pattern);
   for (const n of [...Object.keys(manifest.cues), ...Object.keys(manifest.events ?? {})]) assert.match(n, name);
